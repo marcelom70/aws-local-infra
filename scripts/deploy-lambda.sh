@@ -36,7 +36,7 @@ fi
 # Criar função
 awslocal lambda create-function \
     --function-name minha-funcao \
-    --runtime python3.11 \
+    --runtime python3.9 \
     --handler lambda_function.lambda_handler \
     --role arn:aws:iam::000000000000:role/lambda-role \
     --zip-file fileb://function.zip
