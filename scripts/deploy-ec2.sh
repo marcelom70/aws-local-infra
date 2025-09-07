@@ -13,8 +13,8 @@ awslocal ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp -
 awslocal ec2 authorize-security-group-ingress --group-id $SG_ID --protocol tcp --port 80 --cidr 0.0.0.0/0
 
 # Criar Key Pair
-awslocal ec2 create-key-pair --key-name minha-key --query 'KeyMaterial' --output text > /app/minha-key.pem
-chmod 400 /app/minha-key.pem
+awslocal ec2 create-key-pair --key-name minha-key --query 'KeyMaterial' --output text > app/minha-key.pem
+chmod 400 app/minha-key.pem
 
 # Criar Instância EC2
 INSTANCE_ID=$(awslocal ec2 run-instances \
@@ -29,4 +29,4 @@ INSTANCE_ID=$(awslocal ec2 run-instances \
 
 echo "✅ EC2 Infrastructure deployed!"
 echo "📋 Instance ID: $INSTANCE_ID"
-echo "🔑 Key saved: /app/minha-key.pem"
+echo "🔑 Key saved: app/minha-key.pem"

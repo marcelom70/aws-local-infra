@@ -14,7 +14,7 @@ def lambda_handler(event, context):
         name = event.get('queryStringParameters', {}).get('name', 'Unknown')
         response = {
             'statusCode': 200,
-            'body': json.dumps({'message': f'Hello {name} from API Gateway!'})
+            'body': json.dumps({'message': f'Hello {name} from API Gateway, again!'})
         }
     else:
         # Invocação direta
