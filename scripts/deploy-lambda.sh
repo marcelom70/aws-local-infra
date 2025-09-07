@@ -1,0 +1,16 @@
+#!/bin/bash
+echo "🔨 Deploying Lambda Functions..."
+
+# Zip da função
+cd /app/functions
+zip -r function.zip .
+
+# Criar função
+awslocal lambda create-function \
+    --function-name minha-funcao \
+    --runtime python3.11 \
+    --handler lambda_function.lambda_handler \
+    --role arn:aws:iam::000000000000:role/lambda-role \
+    --zip-file fileb://function.zip
+
+echo "✅ Lambda function deployed!"

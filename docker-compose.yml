@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  localstack:
+    image: localstack/localstack:2.2.0
+    container_name: localstack
+    ports:
+      - "4566:4566"
+      - "4510-4559:4510-4559"
+    volumes:
+      - ./data:/app/data
+      - ./functions:/app/functions
+      - ./scripts:/app/scripts
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - SERVICES=lambda,s3,dynamodb,sns,apigateway,ec2
+      - LAMBDA_EXECUTOR=local
+      - DEBUG=1
+      - HOSTNAME_EXTERNAL=localhost
+
+networks:
+  default:
+    name: aws-local-network
